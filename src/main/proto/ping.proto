@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package io.enotion.proto;
+option java_multiple_files = true;
+option java_package = "io.enotion.proto";
+
+import "google/protobuf/empty.proto";
+
+message PingResponse {
+  bool pong = 1;
+}
+
+service PingServiceGrpc {
+  rpc Ping(stream google.protobuf.Empty) returns (stream PingResponse);
+}

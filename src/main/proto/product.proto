@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package io.enotion.proto.product;
+option java_multiple_files = true;
+option java_package = "io.enotion.proto.product";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/type.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message GetProductsRequest{
+  int64 offset = 1;
+  int64 limit = 2;
+}
+
+message CreateProductRequest{
+  string name = 2;
+  int64 price = 3;
+}
+
+message ProductResponse{
+  string id = 1;
+  string name = 2;
+  int64 price = 3;
+  google.protobuf.Timestamp created_date = 4;
+}
+
+service ProductService {
+  rpc CreateProduct(CreateProductRequest) returns (google.protobuf.StringValue);
+  rpc GetProducts(GetProductsRequest) returns (stream ProductResponse);
+  rpc GetProduct(google.protobuf.StringValue) returns (ProductResponse);
+  rpc DeleteProduct(google.protobuf.StringValue) returns (google.protobuf.Empty);
+}
