@@ -1,0 +1,2 @@
+load-balancing-policy: round_robin
+enable-keep-alive: true

@@ -1,11 +1,9 @@
-package io.enotion.demo.domain.services;
+package io.enotion.demo.server.services;
 
 import com.google.protobuf.Timestamp;
 import io.enotion.proto.product.CreateProductRequest;
 import io.enotion.proto.product.GetProductsRequest;
 import io.enotion.proto.product.ProductResponse;
-import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,7 @@ import java.util.stream.Stream;
 @Slf4j
 @Service
 public class ProductService {
-    Map<String, ProductResponse> productRepository = new HashMap<>();
+    public Map<String, ProductResponse> productRepository = new HashMap<>();
 
     public String createProduct(CreateProductRequest request) {
         String productId = UUID.randomUUID().toString();
