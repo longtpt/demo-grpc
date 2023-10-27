@@ -21,7 +21,8 @@ public class ProductGrpcServiceImpl extends ProductServiceGrpc.ProductServiceImp
 
     @Override
     public void createProduct(CreateProductRequest request, StreamObserver<StringValue> responseObserver) {
-        String productId = productService.createProduct(request);
+//        String productId = productService.createProduct(request);
+        String productId = "sample id";
         responseObserver.onNext(StringValue.of(productId));
         log.info("Do some task");
         try {

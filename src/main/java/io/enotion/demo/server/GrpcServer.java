@@ -20,7 +20,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @Component
 @RequiredArgsConstructor
 public class GrpcServer {
-    private final PingGrpcServiceImpl pingService;
+//    private final PingGrpcServiceImpl pingService;
     private final ProductGrpcServiceImpl productService;
     private final GrpcServerProperties properties;
     private Server server;
@@ -59,7 +59,6 @@ public class GrpcServer {
     @Bean
     public Server server() throws InterruptedException, IOException {
         Server server = ServerBuilder.forPort(9090)
-                .addService(pingService)
                 .addService(productService)
                 .executor(getExecutor())
                 .build();
