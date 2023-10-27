@@ -18,6 +18,8 @@ public class SpyDemo {
 
     @Test
     public void whenUseSpyAnnotation_thenSpyIsInjectedCorrectly() {
+        // given
+
         // when
         spiedList.add("one");
         spiedList.add("two");

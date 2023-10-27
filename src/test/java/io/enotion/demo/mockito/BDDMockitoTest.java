@@ -16,8 +16,6 @@ public class BDDMockitoTest {
 
     @Test
     public void testThrowException() {
-//        given(productService.getProduct(any(String.class)))
-//                .willReturn(ProductResponse.getDefaultInstance());
         // given
         given(productService.getProduct(any(String.class)))
                 .willThrow(new RuntimeException());

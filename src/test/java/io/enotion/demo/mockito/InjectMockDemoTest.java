@@ -24,6 +24,9 @@ public class InjectMockDemoTest {
     public void whenUseInjectMocksAnnotation_thenCorrect() {
         // given
         Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
+
+        // when
+
         // then
         Assertions.assertEquals("aMeaning", dic.getMeaning("aWord"));
     }
