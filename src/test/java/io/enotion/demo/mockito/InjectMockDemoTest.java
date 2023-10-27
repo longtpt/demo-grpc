@@ -21,7 +21,7 @@ public class InjectMockDemoTest {
     MyDictionary dic = new MyDictionary();
 
     @Test
-    public void whenUseInjectMocksAnnotation_thenCorrect() {
+    public void givenWordMap_when_thenReturnMeaning() {
         // given
         Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
 

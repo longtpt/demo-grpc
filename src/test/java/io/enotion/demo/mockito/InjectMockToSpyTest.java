@@ -21,15 +21,15 @@ public class InjectMockToSpyTest {
     MyDictionary spyDic = new MyDictionary();
 
     @Test
-    public void whenUseInjectMocksAnnotation_thenCorrect() {
+    public void givenWordMap_whenAddToDictionary_thenGetMeaning() {
         // given
         Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
 
         // when
         spyDic.add("cat", "meo");
-        Mockito.verify(spyDic).add("cat", "meo");
 
         // then
+        Mockito.verify(spyDic).add("cat", "meo");
         Assertions.assertEquals("aMeaning", spyDic.getMeaning("aWord"));
     }
 }

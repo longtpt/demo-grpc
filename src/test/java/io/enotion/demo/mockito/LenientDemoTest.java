@@ -27,7 +27,7 @@ public class LenientDemoTest {
     }
 
     @Test
-    public void testCreateProduct() {
+    public void given_whenCreateProduct_thenReturnId() {
         // given
 
         // when
@@ -43,10 +43,12 @@ public class LenientDemoTest {
     }
 
     @Test
-    public void getProduct() {
+    public void given_whenDeleteProduct_then() {
         // given
+
         // when
         productService.deleteProduct("other id");
+
         // then
     }
 }

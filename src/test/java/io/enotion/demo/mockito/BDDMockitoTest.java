@@ -15,7 +15,7 @@ public class BDDMockitoTest {
     ProductService productService;
 
     @Test
-    public void testThrowException() {
+    public void givenNoProduct_whenGetProduct_thenThrowRuntimeException() {
         // given
         given(productService.getProduct(any(String.class)))
                 .willThrow(new RuntimeException());

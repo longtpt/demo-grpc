@@ -23,7 +23,7 @@ public class CaptorDemoTest {
     ArgumentCaptor<CreateProductRequest> argCaptor;
 
     @Test
-    public void whenUseCaptorAnnotation_thenTheSame() {
+    public void given_whenCreateProduct_thenReturnProductId() {
         // given
         var request = CreateProductRequest.newBuilder()
                 .setName("new product")

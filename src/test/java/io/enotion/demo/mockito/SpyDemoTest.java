@@ -12,12 +12,12 @@ import java.util.List;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class SpyDemo {
+public class SpyDemoTest {
     @Spy
     List<String> spiedList = new ArrayList<>();
 
     @Test
-    public void whenUseSpyAnnotation_thenSpyIsInjectedCorrectly() {
+    public void given_whenAdd2Element_thenListSizeGrowUp() {
         // given
 
         // when
