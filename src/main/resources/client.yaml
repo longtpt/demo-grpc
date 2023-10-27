@@ -1,0 +1,6 @@
+load-balancing-policy: round_robin
+enable-keep-alive: true
+keep-alive-time: 300
+keep-alive-timeout: 20
+max-inbound-message-size: 512
+max-inbound-metadata-size: 256

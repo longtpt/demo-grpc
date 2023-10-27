@@ -1,8 +1,7 @@
-package io.enotion.demo.application.services;
+package io.enotion.demo.server.services;
 
 import com.google.protobuf.Empty;
 import com.google.protobuf.StringValue;
-import io.enotion.demo.domain.services.ProductService;
 import io.enotion.proto.product.CreateProductRequest;
 import io.enotion.proto.product.GetProductsRequest;
 import io.enotion.proto.product.ProductResponse;
@@ -24,14 +23,29 @@ public class ProductGrpcServiceImpl extends ProductServiceGrpc.ProductServiceImp
     public void createProduct(CreateProductRequest request, StreamObserver<StringValue> responseObserver) {
         String productId = productService.createProduct(request);
         responseObserver.onNext(StringValue.of(productId));
+        log.info("Do some task");
+        try {
+            Thread.sleep(2_000);
+        } catch (InterruptedException e) {
+            responseObserver.onError(e);
+        }
         responseObserver.onCompleted();
+        log.info("create product completed");
     }
 
     @Override
     public void getProducts(GetProductsRequest request, StreamObserver<ProductResponse> responseObserver) {
         productService.getProducts(request)
-                .forEach(responseObserver::onNext);
+                .forEach(p -> {
+                    try {
+                        Thread.sleep(1_000);
+                    } catch (InterruptedException e) {
+                        responseObserver.onError(e);
+                    }
+                    responseObserver.onNext(p);
+                });
         responseObserver.onCompleted();
+        log.info("get products completed");
     }
 
     @Override
@@ -44,6 +58,7 @@ public class ProductGrpcServiceImpl extends ProductServiceGrpc.ProductServiceImp
                     .withCause(e));
         }
         responseObserver.onCompleted();
+        log.info("get product completed");
     }
 
     @Override
@@ -51,6 +66,7 @@ public class ProductGrpcServiceImpl extends ProductServiceGrpc.ProductServiceImp
         productService.deleteProduct(request.getValue());
         responseObserver.onNext(Empty.getDefaultInstance());
         responseObserver.onCompleted();
+        log.info("delete product completed");
     }
 
 }
