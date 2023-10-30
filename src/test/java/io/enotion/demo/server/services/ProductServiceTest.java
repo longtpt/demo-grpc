@@ -1,17 +1,14 @@
-package io.enotion.demo;
+package io.enotion.demo.server.services;
 
 import com.google.protobuf.Timestamp;
-import io.enotion.demo.server.services.ProductService;
 import io.enotion.proto.product.ProductResponse;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 @SpringBootTest
-public class PingGrpcServiceTest {
+public class ProductServiceTest {
     @Autowired
     ProductService productService;
 
@@ -30,7 +27,7 @@ public class PingGrpcServiceTest {
         ProductResponse result = productService.getProduct("1");
 
         // then
-        assertEquals(result, givenProduct);
+        Assertions.assertEquals(result, givenProduct);
     }
 
     @Test
@@ -45,12 +42,12 @@ public class PingGrpcServiceTest {
         productService.productRepository.put("0", givenProduct);
 
         // when
-        RuntimeException runtimeException = assertThrows(RuntimeException.class, () -> {
+        RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class, () -> {
             productService.getProduct("1");
         });
 
         // then
-        assertEquals(runtimeException.getClass(), RuntimeException.class);
+        Assertions.assertEquals(runtimeException.getClass(), RuntimeException.class);
     }
 
 }

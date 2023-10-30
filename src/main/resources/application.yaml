@@ -4,4 +4,4 @@ grpc:
     executor-type: FORK_JOIN
 logging:
   level:
-    io.grpc: debug
+    io.grpc: info
