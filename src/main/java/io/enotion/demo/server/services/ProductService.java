@@ -37,12 +37,7 @@ public class ProductService {
 
     public Stream<ProductResponse> getProducts(GetProductsRequest request) {
         return productRepository.values().stream()
-                .sorted(new Comparator<ProductResponse>() {
-                    @Override
-                    public int compare(ProductResponse o1, ProductResponse o2) {
-                        return Long.compare(o1.getCreatedDate().getSeconds(), o2.getCreatedDate().getSeconds());
-                    }
-                })
+                .sorted(Comparator.comparingLong(o -> o.getCreatedDate().getSeconds()))
                 .skip(request.getOffset())
                 .limit(request.getLimit());
     }
