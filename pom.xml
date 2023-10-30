@@ -130,6 +130,11 @@
                         <version>1.2.1</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <mutators>
+                        <mutator>STRONGER</mutator>
+                    </mutators>
+                </configuration>
             </plugin>
         </plugins>
     </build>
